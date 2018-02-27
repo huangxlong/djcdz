@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#3F51B5</color>
+
+
+    <color name="cpb_white">@android:color/white</color>
+    <color name="bg_white">@android:color/white</color>
+    <color name="line">#DDDDDD</color>
+
+    <color name="main_tab_normal">#9DA9B2</color>
+    <color name="main_tab_act">#1976D2</color>
+</resources>
