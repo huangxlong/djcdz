@@ -17,7 +17,7 @@ import butterknife.BindView;
 
 /**
  * Created by Administrator on 2018/2/24.
- *
+ *  情报
  */
 
 public class NewsFragment extends BaseFragment {

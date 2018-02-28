@@ -5,7 +5,7 @@ import com.djc.djcdz.base.BaseFragment;
 
 /**
  * Created by Administrator on 2018/2/24.
- *
+ *  名师
  */
 
 public class MasterFragment extends BaseFragment {
@@ -22,6 +22,7 @@ public class MasterFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+
 
     }
 }

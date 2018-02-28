@@ -5,6 +5,7 @@ import com.djc.djcdz.base.BaseFragment;
 
 /**
  * Created by Administrator on 2018/2/24.
+ * 最新榜单
  */
 
 public class RankFragment extends BaseFragment {
