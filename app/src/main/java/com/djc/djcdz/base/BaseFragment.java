@@ -1,12 +1,18 @@
 package com.djc.djcdz.base;
 
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+
+import com.djc.djcdz.R;
+import com.djc.djcdz.view.LoadingDialog;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -19,6 +25,8 @@ public abstract class BaseFragment extends Fragment {
 
     private Unbinder mBinder;
     protected Activity mContext;
+    protected View rootView;
+    protected long mClickTime = 0;
 
     @Nullable
     @Override
@@ -50,5 +58,87 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayout();
 
     protected abstract void initView();
+
+
+    protected LoadingDialog mLoadingDialog;
+
+    protected void showLoadingDialog() {
+        mContext = getActivity();
+        if (isValidContext(mContext)) {
+            mContext.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mLoadingDialog == null) {
+                        mLoadingDialog = new LoadingDialog(getActivity());
+                    }
+
+                    mLoadingDialog.setMessage(getString(R.string.loading));
+                    mLoadingDialog.show();
+                }
+            });
+        }
+    }
+
+    protected void showLoadingDialog(final String text) {
+        mContext = getActivity();
+        if (isValidContext(mContext)) {
+            mContext.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mLoadingDialog == null) {
+                        mLoadingDialog = new LoadingDialog(getActivity());
+                    }
+
+                    mLoadingDialog.setMessage(text);
+                    mLoadingDialog.show();
+                }
+            });
+        }
+    }
+
+    protected void hideLoadingDialog() {
+        if (isValidContext(mContext)) {
+            mContext.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mLoadingDialog != null) {
+                        mLoadingDialog.dismiss();
+                    }
+                }
+            });
+        }
+    }
+
+    protected boolean isClickSoon() {
+        if (mClickTime == 0) {
+            mClickTime = System.currentTimeMillis();
+            return false;
+        } else if (System.currentTimeMillis() - mClickTime < 500) {
+            return true;
+        } else {
+            mClickTime = System.currentTimeMillis();
+        }
+        return false;
+    }
+
+    protected boolean isValidContext(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return !(activity == null || activity.isDestroyed() || activity.isFinishing());
+        } else {
+            return !(activity == null || activity.isFinishing());
+        }
+    }
+
+
+    /**
+     * 关闭软键盘
+     */
+    public void closeKeyboard() {
+        InputMethodManager imm = (InputMethodManager) mContext
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        imm.hideSoftInputFromWindow(rootView.getWindowToken(), 0);
+
+    }
 
 }

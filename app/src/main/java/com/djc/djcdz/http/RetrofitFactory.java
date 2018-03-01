@@ -33,8 +33,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitFactory {
 
-    private static final String BASE_URL = "";
-    private static final String TAG = "request:";
+    private static final String BASE_URL = "http://114.55.125.3:8337/recommend/app/";
+    private static final String TAG = "request";
     private static final String ED_UUID = "ed_uuid";
     private final static int CONNECT_TIMEOUT = 30;
 
@@ -77,6 +77,7 @@ public class RetrofitFactory {
                     .addInterceptor(tokenInterceptor)
                     .cookieJar(new CookieJar() {
                         private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
+
                         @Override
                         public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
                             cookieStore.put(url, cookies);
@@ -95,7 +96,7 @@ public class RetrofitFactory {
 
     public static HttpService getHttpService() {
         if (httpService == null) {
-            synchronized (RetrofitFactory.class){
+            synchronized (RetrofitFactory.class) {
                 if (httpService == null) {
                     httpService = new Retrofit.Builder().baseUrl(BASE_URL)
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

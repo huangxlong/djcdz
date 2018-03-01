@@ -1,11 +1,9 @@
 package com.djc.djcdz.ui.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +12,25 @@ import android.widget.LinearLayout;
 
 import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseFragment;
+import com.djc.djcdz.entity.BaseRsp;
+import com.djc.djcdz.entity.CommendReportReq;
+import com.djc.djcdz.http.BaseSubscriber;
+import com.djc.djcdz.http.RetrofitFactory;
 import com.djc.djcdz.util.DensityUtil;
+import com.djc.djcdz.util.JsonUtil;
+import com.djc.djcdz.util.LogUtils;
 import com.djc.djcdz.util.ScreenUtils;
+import com.djc.djcdz.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 2018/2/24.
@@ -40,7 +50,7 @@ public class HomeFragment extends BaseFragment {
     private final int TIME = 10000;// 每张图片停留的时间
 
     private List<View> pageViewsList = new ArrayList<View>();// 存放焦点图片
-//    private List<RspDto.Banner> mBanners = new ArrayList<>();
+    //    private List<RspDto.Banner> mBanners = new ArrayList<>();
     private List<String> mBanners = new ArrayList<>();
 
     /**
@@ -80,7 +90,34 @@ public class HomeFragment extends BaseFragment {
 //        initBanner();
     }
 
+    @OnClick({R.id.btn_test})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_test:
+                CommendReportReq req = new CommendReportReq();
+                String json = JsonUtil.parse2String(req);
+                RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
+                RetrofitFactory.getHttpService()
+                        .report(req)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new BaseSubscriber<BaseRsp>(mContext) {
+                            @Override
+                            public void onResponse(BaseRsp rsp) {
+                                if (rsp.code == 1) {
+                                    LogUtils.d("rsp", "success");
+                                } else {
+                                    LogUtils.d("rsp", rsp.msg);
+                                    ToastUtil.show(mContext, rsp.msg);
+                                }
+                            }
+                        });
 
+                break;
+        }
+    }
+
+    //初始化banner
     public void initBanner() {
         if (getContext() == null) {
             return;
@@ -98,7 +135,6 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void getBanner() {
-
         //if(success)
         mViewPager.setAdapter(pageAdapter);
         mViewPager.setOnPageChangeListener(mOnPageChangeListener);
