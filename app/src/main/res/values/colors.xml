@@ -11,4 +11,9 @@
 
     <color name="main_tab_normal">#9DA9B2</color>
     <color name="main_tab_act">#1976D2</color>
+
+    <color name="tick_yellow">#f5d747</color>
+    <color name="tick_gray">#eaeaea</color>
+    <color name="tick_white">#fff</color>
+    <color name="tick_white1">#fff5d747</color>
 </resources>

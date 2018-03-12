@@ -1,6 +1,7 @@
 package com.djc.djcdz.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -11,11 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.djc.djcdz.R;
+import com.djc.djcdz.app.App;
 import com.djc.djcdz.base.BaseFragment;
 import com.djc.djcdz.entity.BaseRsp;
 import com.djc.djcdz.entity.CommendReportReq;
 import com.djc.djcdz.http.BaseSubscriber;
 import com.djc.djcdz.http.RetrofitFactory;
+import com.djc.djcdz.ui.login.LoginActivity;
 import com.djc.djcdz.util.DensityUtil;
 import com.djc.djcdz.util.JsonUtil;
 import com.djc.djcdz.util.LogUtils;
@@ -94,24 +97,29 @@ public class HomeFragment extends BaseFragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_test:
-                CommendReportReq req = new CommendReportReq();
-                String json = JsonUtil.parse2String(req);
-                RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
-                RetrofitFactory.getHttpService()
-                        .report(req)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new BaseSubscriber<BaseRsp>(mContext) {
-                            @Override
-                            public void onResponse(BaseRsp rsp) {
-                                if (rsp.code == 1) {
-                                    LogUtils.d("rsp", "success");
-                                } else {
-                                    LogUtils.d("rsp", rsp.msg);
-                                    ToastUtil.show(mContext, rsp.msg);
-                                }
-                            }
-                        });
+//                CommendReportReq req = new CommendReportReq();
+//                String json = JsonUtil.parse2String(req);
+//                RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
+//                RetrofitFactory.getHttpService()
+//                        .report(req)
+//                        .subscribeOn(Schedulers.io())
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(new BaseSubscriber<BaseRsp>(mContext) {
+//                            @Override
+//                                                                                                                                                                                                                                       public void onResponse(BaseRsp rsp) {
+//                                if (rsp.code == 1) {
+//                                    LogUtils.d("rsp", "success");
+//                                } else {
+//                                    LogUtils.d("rsp", rsp.msg);
+//                                    ToastUtil.show(mContext, rsp.msg);
+//                                }
+//                            }
+//                        });
+
+                HomeFragment.this.getActivity().finish();
+                App.clearActivities();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
 
                 break;
         }

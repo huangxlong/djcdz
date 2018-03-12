@@ -73,8 +73,8 @@ public class RetrofitFactory {
                     .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                     .readTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                     .writeTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
-                    .addInterceptor(httpLoggingInterceptor)
                     .addInterceptor(tokenInterceptor)
+                    .addInterceptor(httpLoggingInterceptor)
                     .cookieJar(new CookieJar() {
                         private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
 

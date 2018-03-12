@@ -1,7 +1,10 @@
 package com.djc.djcdz.ui;
 
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -59,12 +62,21 @@ public class MainTabActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.slide);
+            //退出时使用
+            getWindow().setExitTransition(slide);
+            //第一次进入时使用
+            getWindow().setEnterTransition(slide);
+            //再次进入时使用
+            getWindow().setReenterTransition(slide);
+        }
+
         mFragments.add(HomeFragment.newInstance());
         mFragments.add(CommentsFragment.newInstance());
         mFragments.add(RankFragment.newInstance());
         mFragments.add(NewsFragment.newInstance());
         mFragments.add(MasterFragment.newInstance());
-
         switchContent(null, mFragments.get(0));
     }
 

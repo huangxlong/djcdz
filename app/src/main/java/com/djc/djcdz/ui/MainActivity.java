@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseActivity;
+import com.djc.djcdz.ui.login.LoginActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -17,6 +18,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        startActivity(new Intent(this,MainTabActivity.class));
+        startActivity(new Intent(this,LoginActivity.class));
     }
 }
