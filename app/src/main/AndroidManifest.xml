@@ -51,6 +51,11 @@
             android:name=".ui.UserActivity"
             android:configChanges="keyboardHidden|orientation|locale|screenSize"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.PlayerActivity"
+            android:configChanges="keyboardHidden|orientation|locale|screenSize"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseActivity;
 import com.djc.djcdz.ui.MainTabActivity;
+import com.djc.djcdz.ui.PlayerActivity;
 import com.djc.djcdz.view.tickview.RatingView;
 import com.djc.djcdz.view.tickview.TickView;
 
@@ -98,7 +99,7 @@ public class LoginActivity extends BaseActivity {
                         @Override
                         public void run() {
                             ratingView.setChecked(false);
-                            Intent intent = new Intent(LoginActivity.this, MainTabActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, PlayerActivity.class);
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this).toBundle());
                             } else {

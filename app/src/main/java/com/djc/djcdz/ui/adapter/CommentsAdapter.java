@@ -18,8 +18,8 @@ import java.util.List;
 
 public class CommentsAdapter extends BaseQuickAdapter<CommentsBean, BaseViewHolder> {
 
-    public CommentsAdapter(int layoutResId, @Nullable List<CommentsBean> data) {
-        super(layoutResId, data);
+    public CommentsAdapter(@Nullable List<CommentsBean> data) {
+        super(R.layout.item_comments, data);
     }
 
     @Override

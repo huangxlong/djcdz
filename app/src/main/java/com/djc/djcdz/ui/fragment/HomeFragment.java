@@ -5,25 +5,31 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.djc.djcdz.R;
 import com.djc.djcdz.app.App;
 import com.djc.djcdz.base.BaseFragment;
 import com.djc.djcdz.entity.BaseRsp;
 import com.djc.djcdz.entity.CommendReportReq;
+import com.djc.djcdz.entity.MasterBean;
 import com.djc.djcdz.http.BaseSubscriber;
 import com.djc.djcdz.http.RetrofitFactory;
+import com.djc.djcdz.ui.adapter.MasterAdapter;
 import com.djc.djcdz.ui.login.LoginActivity;
 import com.djc.djcdz.util.DensityUtil;
 import com.djc.djcdz.util.JsonUtil;
 import com.djc.djcdz.util.LogUtils;
 import com.djc.djcdz.util.ScreenUtils;
 import com.djc.djcdz.util.ToastUtil;
+import com.djc.djcdz.view.MyLayoutManager;
+import com.google.android.flexbox.FlexboxLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +52,10 @@ public class HomeFragment extends BaseFragment {
     ViewPager mViewPager;
     @BindView(R.id.pointLayout)
     LinearLayout mHomePoint;
+    @BindView(R.id.flexboxLayout)
+    FlexboxLayout flexboxLayout;
+
+    private List<MasterBean> masterList = new ArrayList<>();
 
     private int currentIndex;
     private final int NEXT_FOCUS = 2;// 更换图片的消息的标志
@@ -91,6 +101,17 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initView() {
 //        initBanner();
+
+
+        for (int i = 0; i < 9; i++) {
+            View view = LayoutInflater.from(mContext).inflate(R.layout.item_master, null);
+            TextView tvName = view.findViewById(R.id.tv_name);
+            tvName.setText("山妖" + i);
+
+            flexboxLayout.addView(view);
+
+        }
+
     }
 
     @OnClick({R.id.btn_test})

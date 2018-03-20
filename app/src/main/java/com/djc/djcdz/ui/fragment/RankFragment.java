@@ -22,5 +22,6 @@ public class RankFragment extends BaseFragment {
     @Override
     protected void initView() {
 
+
     }
 }

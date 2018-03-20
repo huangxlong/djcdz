@@ -1,7 +1,6 @@
 package com.djc.djcdz.ui.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -16,8 +15,8 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Created by Administrator on 2018/2/24.
- * 解盘
+ * Created by Administrator
+ * on 2018/3/13 星期二.
  */
 
 public class CommentsFragment extends BaseFragment {
@@ -47,7 +46,7 @@ public class CommentsFragment extends BaseFragment {
         CommentsBean commentsBean = new CommentsBean();
         commentsBean.name = "22";
         commentsList.add(commentsBean);
-        CommentsAdapter adapter = new CommentsAdapter(R.layout.item_comments, commentsList);
+        CommentsAdapter adapter = new CommentsAdapter(commentsList);
         adapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         adapter.isFirstOnly(false);
         recycler.setAdapter(adapter);
