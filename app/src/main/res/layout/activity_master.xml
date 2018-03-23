@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.djc.djcdz.ui.MasterActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="名师堂"
+            android:textColor="@color/bg_white" />
+
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/back" />
+
+    </RelativeLayout>
+
+    <com.djc.djcdz.view.MyScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EcEdF2"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ECEDF2"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/tv_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="账号:121431414142141" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="已追踪：山妖" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_white"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_master"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/master" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/iv_master"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="山妖"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_star"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="追踪度2564" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true">
+
+
+                        <Button
+                            android:id="@+id/btn_fellow"
+                            android:layout_width="70dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/shape_master_fellow_normal"
+                            android:text="追踪TA"
+                            android:textColor="@color/btn_gray" />
+
+                        <Button
+                            android:id="@+id/btn_words"
+                            android:layout_width="70dp"
+                            android:layout_height="35dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/shape_master_words"
+                            android:text="写留言"
+                            android:textColor="#00a2ff" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.6dp"
+                    android:background="#DBDBDB" />
+
+                <TextView
+                    android:id="@+id/tv_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="\t\t\t\t执业编号A1140616110026，高级投资顾问，高级行业研究员。长期致力于投资风险的划型研究，强调收益的风险配比关系，擅长动态分析行业和公司的内在价值演化，以重势重质为核心，独创了引领市场的双保险投资模型-“贝塔+阿尔法预警实战技法”。其反常合道的投资风格呈现出强烈的“稳、狠、准”特性，并在化解系统性风险和非系统性风险上屡出奇招；其化险为夷、险中求胜的独门绝技更是为实现超额收益提供了极其难得的投资思路和实操新路径，被业内一致公认为“反向博弈大师”。" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_master_layout"
+                    android:orientation="vertical"
+                    android:paddingBottom="0.6dp"
+                    android:paddingLeft="0.6dp"
+                    android:paddingRight="0.6dp"
+                    android:paddingTop="0.6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="#FFF6F5"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="30日盈利率" />
+
+                        <View
+                            android:layout_width="0.6dp"
+                            android:layout_height="match_parent"
+                            android:background="#E6EaEB" />
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="整体盈利率" />
+
+                        <View
+                            android:layout_width="0.6dp"
+                            android:layout_height="match_parent"
+                            android:background="#E6EaEB" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="30日成功率" />
+
+                        <View
+                            android:layout_width="0.6dp"
+                            android:layout_height="match_parent"
+                            android:background="#E6EaEB"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="整体成功率" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/bg_white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_month_profit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="75.12%"
+                            android:textColor="#FF432f" />
+
+                        <View
+                            android:layout_width="0.6dp"
+                            android:layout_height="match_parent"
+                            android:background="#E6EaEB" />
+
+
+                        <TextView
+                            android:id="@+id/tv_total_profit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="85.19%"
+                            android:textColor="#FF432F" />
+
+                        <View
+                            android:layout_width="0.6dp"
+                            android:layout_height="match_parent"
+                            android:background="#E6EaEB" />
+
+                        <TextView
+                            android:id="@+id/tv_month_success"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="93.15%"
+                            android:textColor="#FF432F" />
+
+                        <View
+                            android:layout_width="0.6dp"
+                            android:layout_height="match_parent"
+                            android:background="#E6EaEB"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:id="@+id/tv_total_success"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="83.42%"
+                            android:textColor="#FF432F" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="8dp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </com.djc.djcdz.view.MyScrollView>
+</LinearLayout>

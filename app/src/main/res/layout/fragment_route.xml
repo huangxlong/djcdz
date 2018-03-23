@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:background="@color/bg_white"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:background="#FF422F" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="最新研究成果" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_route"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_title">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_route"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+
+    <include
+        android:id="@+id/rl_page"
+        layout="@layout/layout_page"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/rl_route" />
+
+</RelativeLayout>

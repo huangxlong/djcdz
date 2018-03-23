@@ -8,6 +8,8 @@ import com.djc.djcdz.BuildConfig;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by Administrator on 2018/2/22.
  */
@@ -21,6 +23,9 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         sApp = this;
+
+        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);     		// 初始化 JPush
     }
 
     public static App getApplication() {

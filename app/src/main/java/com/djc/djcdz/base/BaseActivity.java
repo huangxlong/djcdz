@@ -27,19 +27,16 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected String TAG = "BaseActivity";
-    private Unbinder mBinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TAG = getClass().getSimpleName();
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-        setContentView(getLayout());
-        mBinder = ButterKnife.bind(this);
         App.addActivity(this);
-        setWindowStatusBarColor(this, R.color.colorPrimaryDark);
+        setWindowStatusBarColor(this, R.color.colorPrimary);
         LogUtils.d("Activity:",TAG);
-        initView();
+
     }
 
     //设置状态栏颜色
@@ -76,7 +73,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         App.removeActivity(this);
         super.onDestroy();
-        mBinder.unbind();
+
     }
 
     protected LoadingDialog mLoadingDialog;
@@ -160,7 +157,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         return false;
     }
 
-    protected abstract int getLayout();
-
-    protected abstract void initView();
 }

@@ -1,18 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.djc.djcdz.view.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:fillViewport="true"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:scrollbars="none">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler"
+        <RelativeLayout
+            android:id="@+id/rl_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="20dp"
+                android:background="#FF422F" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="操作记录" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_title">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rl_news">
+
+            <include
+                android:id="@+id/rl_page"
+                layout="@layout/layout_page"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.djc.djcdz.view.MyScrollView>

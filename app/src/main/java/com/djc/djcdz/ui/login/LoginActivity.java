@@ -8,6 +8,7 @@ import android.animation.ValueAnimator;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -24,7 +25,9 @@ import com.djc.djcdz.view.tickview.RatingView;
 import com.djc.djcdz.view.tickview.TickView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class LoginActivity extends BaseActivity {
 
@@ -47,14 +50,21 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.rating_view)
     RatingView ratingView;
     private Boolean isClick = false;  //是否已经点击登录按钮，防止多次点击
+    private Unbinder unbinder;
+
 
     @Override
-    protected int getLayout() {
-        return R.layout.activity_login;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        unbinder = ButterKnife.bind(this);
+        initView();
     }
 
-    @Override
-    protected void initView() {
+
+    private void initView() {
+        etAccount.setText("123");
+        etPassword.setText("123");
     }
 
     @OnClick({R.id.main_btn_login, R.id.btn_reset})
@@ -99,12 +109,12 @@ public class LoginActivity extends BaseActivity {
                         @Override
                         public void run() {
                             ratingView.setChecked(false);
-                            Intent intent = new Intent(LoginActivity.this, PlayerActivity.class);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this).toBundle());
-                            } else {
-                                startActivity(intent);
-                            }
+                            Intent intent = new Intent(LoginActivity.this, MainTabActivity.class);
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this).toBundle());
+//                            } else {
+                            startActivity(intent);
+//                            }
                         }
                     }, 1000);
 
@@ -192,4 +202,9 @@ public class LoginActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }

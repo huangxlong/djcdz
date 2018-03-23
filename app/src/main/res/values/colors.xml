@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#3F51B5</color>
+    <color name="colorPrimary">#FF4330</color>
+    <color name="colorPrimaryDark">#FF4330</color>
+    <color name="colorAccent">#FF4330</color>
 
 
     <color name="cpb_white">@android:color/white</color>
@@ -16,4 +16,17 @@
     <color name="tick_gray">#eaeaea</color>
     <color name="tick_white">#fff</color>
     <color name="tick_white1">#fff5d747</color>
+
+    <color name="text_orange">#f90</color>
+    <color name="text_orange60">#f60</color>
+    <color name="text_red">#e64f40</color>
+
+    <color name="btn_gray">#d6d7d7</color>
+    <color name="btn_normal">#ff422f</color>
+
+
+    <color name="page_current">#ff422f</color>
+    <color name="page_other">#333333</color>
+
+
 </resources>

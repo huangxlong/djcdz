@@ -1,5 +1,7 @@
 package com.djc.djcdz.ui;
 
+import android.os.Bundle;
+
 import com.bumptech.glide.Glide;
 import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseActivity;
@@ -8,6 +10,8 @@ import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Administrator
@@ -18,18 +22,22 @@ public class PlayerActivity extends BaseActivity {
 
     @BindView(R.id.nice_video_player)
     NiceVideoPlayer mNiceVideoPlayer;
+    private Unbinder unbinder;
 
 
     @Override
-    protected int getLayout() {
-        return R.layout.activity_player;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_player);
+        unbinder = ButterKnife.bind(this);
+        initView();
     }
 
-    @Override
-    protected void initView() {
+
+    private void initView() {
         mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK); // IjkPlayer or MediaPlayer
         String videoUrl = "http://covertness.qiniudn" +
-        ".com/android_zaixianyingyinbofangqi_test_baseline.mp4";
+                ".com/android_zaixianyingyinbofangqi_test_baseline.mp4";
         mNiceVideoPlayer.setUp(videoUrl, null);
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("测试标题");
@@ -41,6 +49,7 @@ public class PlayerActivity extends BaseActivity {
                 .into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
     }
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -53,4 +62,9 @@ public class PlayerActivity extends BaseActivity {
         super.onBackPressed();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }

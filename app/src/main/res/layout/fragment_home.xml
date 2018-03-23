@@ -2,9 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
-    <ScrollView
+    <com.djc.djcdz.view.MyScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -37,10 +39,12 @@
 
             <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/flexboxLayout"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg_white"
                 app:alignContent="center"
                 app:alignItems="center"
                 app:flexDirection="row"
@@ -49,14 +53,117 @@
                 app:showDivider="beginning|middle" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="#ECEDF2"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/notice" />
+
+                <TextView
+                    android:id="@+id/tv_rolling"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:singleLine="true"
+                    android:text="前海恒大双双被罚，万能险压力山大，哪些险资股要回避？找山妖哈111111111111111111111111111" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="20dp"
+                    android:background="#FF422F" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="机构情报" />
+
+
+                <TextView
+                    android:id="@+id/tv_news_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/right"
+                    android:text="更多" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_news_more"
+                    android:layout_marginTop="5dp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_comment_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="20dp"
+                    android:background="#FF422F" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="名师解盘" />
+
+
+                <TextView
+                    android:id="@+id/tv_comment_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/right"
+                    android:text="更多" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_comment_more"
+                    android:layout_marginTop="5dp" />
+
+            </RelativeLayout>
+
             <Button
                 android:id="@+id/btn_test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test" />
-
+                android:text="exit" />
         </LinearLayout>
 
-    </ScrollView>
+
+    </com.djc.djcdz.view.MyScrollView>
 
 </RelativeLayout>

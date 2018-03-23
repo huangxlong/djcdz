@@ -1,7 +1,12 @@
 package com.djc.djcdz.ui;
 
+import android.os.Bundle;
+
 import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseActivity;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Administrator
@@ -10,13 +15,26 @@ import com.djc.djcdz.base.BaseActivity;
  */
 
 public class UserActivity extends BaseActivity {
+
+    private Unbinder unbinder;
+
     @Override
-    protected int getLayout() {
-        return R.layout.activity_user;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user);
+        unbinder = ButterKnife.bind(this);
+        initView();
     }
 
-    @Override
-    protected void initView() {
 
+    private void initView() {
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }
