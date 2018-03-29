@@ -4,13 +4,15 @@
     <color name="colorPrimaryDark">#FF4330</color>
     <color name="colorAccent">#FF4330</color>
 
+    <color name="main_background">#ECEDF2</color>
+
 
     <color name="cpb_white">@android:color/white</color>
     <color name="bg_white">@android:color/white</color>
     <color name="line">#DDDDDD</color>
 
     <color name="main_tab_normal">#9DA9B2</color>
-    <color name="main_tab_act">#1976D2</color>
+    <color name="main_tab_act">#FF422F</color>
 
     <color name="tick_yellow">#f5d747</color>
     <color name="tick_gray">#eaeaea</color>

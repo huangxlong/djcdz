@@ -12,6 +12,7 @@ import com.djc.djcdz.ui.MasterActivity;
 import com.djc.djcdz.ui.adapter.PageAdapter;
 import com.djc.djcdz.ui.adapter.RecordAdapter;
 import com.djc.djcdz.util.ToastUtil;
+import com.djc.djcdz.view.HorCenterRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class RecordFragment extends BaseFragment {
     @BindView(R.id.recycler_record)
     RecyclerView recyclerRecord;
     @BindView(R.id.recycler_page)
-    RecyclerView recyclerPage;
+    HorCenterRecyclerView recyclerPage;
     private MasterActivity activity;
     private int currentPage = 1;  //当前页数
     private int pageCount = 6;  //每页展示的个数

@@ -1,6 +1,7 @@
 package com.djc.djcdz.ui.fragment;
 
 import android.content.Intent;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,12 +11,12 @@ import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseFragment;
 import com.djc.djcdz.entity.RspDto;
 import com.djc.djcdz.ui.MainTabActivity;
-import com.djc.djcdz.ui.MasterActivity;
 import com.djc.djcdz.ui.WebActivity;
-import com.djc.djcdz.ui.adapter.LogAdapter;
 import com.djc.djcdz.ui.adapter.NewsAdapter;
 import com.djc.djcdz.ui.adapter.PageAdapter;
 import com.djc.djcdz.util.ToastUtil;
+import com.djc.djcdz.view.HorCenterRecyclerView;
+import com.djc.djcdz.view.MyItemDecoration;
 import com.djc.djcdz.view.MyScrollView;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class NewsFragment extends BaseFragment {
     @BindView(R.id.recycler_news)
     RecyclerView recyclerNews;
     @BindView(R.id.recycler_page)
-    RecyclerView recyclerPage;
+    HorCenterRecyclerView recyclerPage;
     private MainTabActivity activity;
     private int currentPage = 1;  //当前页数
     private int pageCount = 6;  //每页展示的个数
@@ -71,6 +72,7 @@ public class NewsFragment extends BaseFragment {
         newsAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);  //开启动画
         newsAdapter.setNotDoAnimationCount(6);
         newsAdapter.isFirstOnly(false); //重复执行动画
+        recyclerNews.addItemDecoration(new MyItemDecoration(mContext, DividerItemDecoration.VERTICAL));
         recyclerNews.setAdapter(newsAdapter);
 
         newsAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {

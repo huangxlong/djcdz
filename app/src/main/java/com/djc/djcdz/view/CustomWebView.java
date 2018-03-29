@@ -15,7 +15,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by Administrator on 2016/7/14.
+ *
+ * Created by Administrator on 2018/3/22.
  */
 public class CustomWebView extends WebView {
 

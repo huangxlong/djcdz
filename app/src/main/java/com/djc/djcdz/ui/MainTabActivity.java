@@ -1,6 +1,7 @@
 package com.djc.djcdz.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -72,6 +73,7 @@ public class MainTabActivity extends BaseActivity {
     public List<Fragment> mFragments = new ArrayList<>();
     public List<RspDto.News> newsList = new ArrayList<>();
     public List<RspDto.Comment> commentList = new ArrayList<>();
+    public List<RspDto.Rank> rankList = new ArrayList<>();
 
 
     /**
@@ -95,17 +97,14 @@ public class MainTabActivity extends BaseActivity {
             }
         }
     };
-    private Unbinder unbinder;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_tab);
-        unbinder = ButterKnife.bind(this);
-        initView();
+    protected int getLayout() {
+        return R.layout.activity_main_tab;
     }
 
-    private void initView() {
+    @Override
+    protected  void initView() {
         mFragments.add(HomeFragment.newInstance());
         mFragments.add(CommentsFragment.newInstance());
         mFragments.add(RankFragment.newInstance());
@@ -113,25 +112,29 @@ public class MainTabActivity extends BaseActivity {
         mFragments.add(MasterFragment.newInstance());
         switchContent(null, mFragments.get(0));
         setDefaultResources(1);
-
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 71; i++) {
             RspDto.News news = new RspDto.News();
             news.title = "ttt" + i;
             newsList.add(news);
-        }
 
-        for (int i = 0; i < 50; i++) {
             RspDto.Comment comment = new RspDto.Comment();
             comment.commnets = "comment" + i;
             commentList.add(comment);
+
+            RspDto.Rank rank = new RspDto.Rank();
+            rank.rank = i + 1;
+            rank.name = "山妖" + (i + 1);
+            rankList.add(rank);
         }
+
+
     }
 
     public void setTitleName(String title) {
         tvTitle.setText(title);
     }
 
-    @OnClick({R.id.layout_home, R.id.layout_comments, R.id.layout_rank, R.id.layout_news, R.id.layout_master})
+    @OnClick({R.id.layout_home, R.id.layout_comments, R.id.layout_rank, R.id.layout_news, R.id.layout_master, R.id.iv_user})
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.layout_home:
@@ -158,6 +161,10 @@ public class MainTabActivity extends BaseActivity {
                 setDefaultResources(TAB_MASTER);
                 switchContent(mContent, mFragments.get(4));
                 setTitleName("名师");
+                break;
+            case R.id.iv_user:
+                Intent intent = new Intent(this, UserActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -396,6 +403,5 @@ public class MainTabActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
     }
 }

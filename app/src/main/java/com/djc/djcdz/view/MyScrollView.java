@@ -61,8 +61,6 @@ public class MyScrollView extends ScrollView {
 
                 downY = (int) e.getRawY();
 
-                break;
-
             case MotionEvent.ACTION_MOVE:
 
                 int moveY = (int) e.getRawY();

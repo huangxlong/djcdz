@@ -68,9 +68,26 @@ public class RspDto {
      * 名师解盘
      */
     public static class Comment {
-        public String commnets = "";
+        public String commnets = "刘主席周末打大鳄，市场波动在所难免...";
         public String time = "";
         public String photoUrl = "";
         public String name = "";
     }
+
+    /**
+     * 名师解盘
+     */
+    public static class Rank {
+        public int rank;
+        public String photoUrl = "";
+        public String name = "";
+        public String newProfit = "22.24%"; //最新收益
+        public String monthProfit = "91.45%";    //30天盈利率
+        public String totalProfit = "92.54%"; //整体盈利率
+        public String star = "94.52%";   //追踪度
+        public String monthSuccess = "94.15%";    //30天成功率
+        public String totalSuccess = "95.18%";    //  整体成功率
+    }
+
+
 }

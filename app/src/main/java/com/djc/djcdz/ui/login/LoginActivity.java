@@ -50,19 +50,14 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.rating_view)
     RatingView ratingView;
     private Boolean isClick = false;  //是否已经点击登录按钮，防止多次点击
-    private Unbinder unbinder;
-
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        unbinder = ButterKnife.bind(this);
-        initView();
+    protected int getLayout() {
+        return R.layout.activity_login;
     }
 
-
-    private void initView() {
+    @Override
+    protected void initView() {
         etAccount.setText("123");
         etPassword.setText("123");
     }
@@ -205,6 +200,5 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
     }
 }

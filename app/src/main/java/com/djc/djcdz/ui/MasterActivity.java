@@ -2,36 +2,24 @@ package com.djc.djcdz.ui;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseActivity;
 import com.djc.djcdz.entity.RspDto;
-import com.djc.djcdz.ui.adapter.LogAdapter;
-import com.djc.djcdz.ui.adapter.RecordAdapter;
-import com.djc.djcdz.ui.adapter.RouteAdapter;
 import com.djc.djcdz.ui.fragment.master.LogFragment;
 import com.djc.djcdz.ui.fragment.master.MasterHomeFragment;
 import com.djc.djcdz.ui.fragment.master.RecordFragment;
 import com.djc.djcdz.ui.fragment.master.RouteFragment;
 import com.djc.djcdz.ui.fragment.master.WordsFragment;
 import com.djc.djcdz.util.ToastUtil;
-import com.djc.djcdz.view.MyItemDecoration;
 import com.djc.djcdz.view.MyScrollView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MasterActivity extends BaseActivity {
@@ -47,15 +35,14 @@ public class MasterActivity extends BaseActivity {
     @BindView(R.id.scrollView)
     public MyScrollView scrollView;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_master);
-        ButterKnife.bind(this);
-        initView();
+    protected int getLayout() {
+        return R.layout.activity_master;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         int id = getIntent().getIntExtra("id", 0);
         ToastUtil.show(this, id + "");
         initFragment();
@@ -149,6 +136,7 @@ public class MasterActivity extends BaseActivity {
         if (tvTitle.getText().equals("名师堂")) {
             super.onBackPressed();
         } else {
+            closeKeyboard();
             switchContent(mContent, mFragments.get(0));
             addTitle("名师堂");
         }

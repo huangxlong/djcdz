@@ -24,18 +24,14 @@ public class MainActivity extends BaseActivity {
     public static final String KEY_TITLE = "title";
     public static final String KEY_MESSAGE = "message";
     public static final String KEY_EXTRAS = "extras";
-    private Unbinder unbinder;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        unbinder = ButterKnife.bind(this);
-        initView();
+    protected int getLayout() {
+        return R.layout.activity_main;
     }
 
-
-    private void initView() {
+    @Override
+    protected void initView() {
         registerMessageReceiver();  // used for receive msg
         startActivity(new Intent(this, LoginActivity.class));
     }
@@ -56,7 +52,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
-        unbinder.unbind();
         super.onDestroy();
     }
 

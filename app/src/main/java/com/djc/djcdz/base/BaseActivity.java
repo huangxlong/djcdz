@@ -17,11 +17,10 @@ import com.djc.djcdz.util.ToastUtil;
 import com.djc.djcdz.view.LoadingDialog;
 
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
+ * Base
  * Created by Administrator on 2018/2/22.
- *
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -33,11 +32,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         TAG = getClass().getSimpleName();
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        setContentView(getLayout());
+        ButterKnife.bind(this);
         App.addActivity(this);
         setWindowStatusBarColor(this, R.color.colorPrimary);
-        LogUtils.d("Activity:",TAG);
-
+        LogUtils.d("Activity:", TAG);
+        initView();
     }
+
+    protected abstract int getLayout();
+
+    protected abstract void initView();
 
     //设置状态栏颜色
     public static void setWindowStatusBarColor(Activity activity, int colorResId) {
@@ -59,7 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-    private void closeKeyboard() {
+    public void closeKeyboard() {
         InputMethodManager imm = (InputMethodManager) this
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
 

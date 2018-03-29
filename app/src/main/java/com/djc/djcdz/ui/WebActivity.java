@@ -3,7 +3,6 @@ package com.djc.djcdz.ui;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
@@ -19,9 +18,7 @@ import com.djc.djcdz.base.BaseActivity;
 import com.djc.djcdz.view.CustomWebView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * 服务协议
@@ -35,18 +32,17 @@ public class WebActivity extends BaseActivity {
     @BindView(R.id.webView)
     CustomWebView mWebView;
     private String mUrl = "";
-    private Unbinder unbinder;
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_common_web);
-        unbinder = ButterKnife.bind(this);
-        initView();
+    protected int getLayout() {
+        return R.layout.activity_common_web;
     }
 
 
-    private void initView() {
+    @Override
+    protected void initView() {
 
         String title = getIntent().getStringExtra(KEY_TITLE);
         tvTitle.setText(title);

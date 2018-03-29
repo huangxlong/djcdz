@@ -13,6 +13,7 @@ import com.djc.djcdz.ui.MainTabActivity;
 import com.djc.djcdz.ui.adapter.CommentsAdapter;
 import com.djc.djcdz.ui.adapter.PageAdapter;
 import com.djc.djcdz.util.ToastUtil;
+import com.djc.djcdz.view.HorCenterRecyclerView;
 import com.djc.djcdz.view.MyItemDecoration;
 import com.djc.djcdz.view.MyScrollView;
 
@@ -33,7 +34,7 @@ public class CommentsFragment extends BaseFragment {
     @BindView(R.id.recycler_comment)
     RecyclerView recyclerComment;
     @BindView(R.id.recycler_page)
-    RecyclerView recyclerPage;
+    HorCenterRecyclerView recyclerPage;
     private MainTabActivity activity;
     private int currentPage = 1;  //当前页数
     private int pageCount = 6;  //每页展示的个数

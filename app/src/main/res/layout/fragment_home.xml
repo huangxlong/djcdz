@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ECEDF2"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
@@ -19,7 +20,8 @@
             <RelativeLayout
                 android:id="@+id/relativeTop"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/bg_white">
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewPager"
@@ -41,10 +43,9 @@
                 android:id="@+id/flexboxLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/bg_white"
+                android:padding="16dp"
                 app:alignContent="center"
                 app:alignItems="center"
                 app:flexDirection="row"
@@ -80,6 +81,7 @@
                 android:id="@+id/rl_news_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/bg_white"
                 android:gravity="center_vertical"
                 android:paddingBottom="8dp"
                 android:paddingLeft="16dp"
@@ -121,6 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:background="@color/bg_white"
                 android:gravity="center_vertical"
                 android:paddingBottom="8dp"
                 android:paddingLeft="16dp"
@@ -155,6 +158,48 @@
                     android:layout_marginTop="5dp" />
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_rank_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/bg_white"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="20dp"
+                    android:background="#FF422F" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="最新榜单" />
+
+
+                <TextView
+                    android:id="@+id/tv_rank_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/right"
+                    android:text="更多" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_rank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_rank_more"
+                    android:layout_marginTop="8dp" />
+
+            </RelativeLayout>
+
 
             <Button
                 android:id="@+id/btn_test"

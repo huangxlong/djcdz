@@ -12,7 +12,6 @@ import com.djc.djcdz.ui.MasterActivity;
 import com.djc.djcdz.ui.adapter.LogAdapter;
 import com.djc.djcdz.ui.adapter.RecordAdapter;
 import com.djc.djcdz.ui.adapter.RouteAdapter;
-import com.djc.djcdz.view.FullyLinearLayoutManager;
 import com.djc.djcdz.view.MyItemDecoration;
 
 import java.util.ArrayList;

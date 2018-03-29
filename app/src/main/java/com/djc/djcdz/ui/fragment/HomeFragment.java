@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -19,10 +20,13 @@ import com.djc.djcdz.base.BaseFragment;
 import com.djc.djcdz.entity.RspDto;
 import com.djc.djcdz.ui.MainTabActivity;
 import com.djc.djcdz.ui.MasterActivity;
+import com.djc.djcdz.ui.PlayerActivity;
 import com.djc.djcdz.ui.WebActivity;
 import com.djc.djcdz.ui.adapter.CommentsAdapter;
 import com.djc.djcdz.ui.adapter.NewsAdapter;
+import com.djc.djcdz.ui.adapter.RankAdapter;
 import com.djc.djcdz.ui.login.LoginActivity;
+import com.djc.djcdz.util.ToastUtil;
 import com.djc.djcdz.view.MyItemDecoration;
 import com.google.android.flexbox.FlexboxLayout;
 
@@ -51,9 +55,12 @@ public class HomeFragment extends BaseFragment {
     RecyclerView recyclerNews;
     @BindView(R.id.recycler_comment)
     RecyclerView recyclerComment;
+    @BindView(R.id.recycler_rank)
+    RecyclerView recyclerRank;
     private List<RspDto.Master> masters = new ArrayList<>();
     private List<RspDto.News> newsList = new ArrayList<>();
     private List<RspDto.Comment> commentList = new ArrayList<>();
+    private List<RspDto.Rank> rankList = new ArrayList<>();
     private MainTabActivity activity;
 
     public static HomeFragment newInstance() {
@@ -76,6 +83,39 @@ public class HomeFragment extends BaseFragment {
         initNews();
 
         initComment();
+
+        initRank();
+
+    }
+
+    /**
+     * 初始化榜单
+     */
+    private void initRank() {
+        for (int i = 0; i < 5; i++) {
+            rankList.add(activity.rankList.get(i));
+        }
+
+        RankAdapter rankAdapter = new RankAdapter(rankList);
+        LinearLayoutManager rankManager = new LinearLayoutManager(mContext);
+        rankManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerRank.setLayoutManager(rankManager);
+        recyclerRank.setAdapter(rankAdapter);
+
+        rankAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (view.getId()) {
+                    case R.id.tv_check:
+                        ToastUtil.show(mContext, "查看" + position);
+                        break;
+                    case R.id.tv_star_ta:
+                        ToastUtil.show(mContext, "追踪" + position);
+                        break;
+                }
+
+            }
+        });
 
     }
 
@@ -101,8 +141,7 @@ public class HomeFragment extends BaseFragment {
      */
     private void initNews() {
         for (int i = 0; i < 3; i++) {
-            RspDto.News newsBean = new RspDto.News();
-            newsList.add(newsBean);
+            newsList.add(activity.newsList.get(i));
         }
         NewsAdapter newsAdapter = new NewsAdapter(newsList);
         LinearLayoutManager newsManager = new LinearLayoutManager(mContext);
@@ -125,7 +164,7 @@ public class HomeFragment extends BaseFragment {
      * 初始化名师
      */
     private void initMaster() {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             RspDto.Master master = new RspDto.Master();
             if (i == 0) {
                 master.isFollow = true;
@@ -160,15 +199,22 @@ public class HomeFragment extends BaseFragment {
                         @Override
                         public void run() {
                             hideLoadingDialog();
-                            for (int j = 0; j < flexboxLayout.getChildCount(); j++) {
-                                Button btn = flexboxLayout.getChildAt(j).findViewById(R.id.btn_fellow);
-                                btn.setBackgroundResource(R.drawable.shape_fellow_normal);
+                            Button btn = flexboxLayout.getChildAt(finalI).findViewById(R.id.btn_fellow);
+                            if (btn.getText().equals("已追踪")) {
                                 btn.setText("追踪他");
                                 btn.setTextColor(getResources().getColor(R.color.btn_normal));
-                                if (j == finalI) {
-                                    btn.setBackgroundResource(R.drawable.shape_fellow_star);
-                                    btn.setText("已追踪");
-                                    btn.setTextColor(getResources().getColor(R.color.bg_white));
+                                btn.setBackgroundResource(R.drawable.shape_fellow_normal);
+                            } else {
+                                for (int j = 0; j < flexboxLayout.getChildCount(); j++) {
+                                    Button btnj = flexboxLayout.getChildAt(j).findViewById(R.id.btn_fellow);
+                                    btnj.setBackgroundResource(R.drawable.shape_fellow_normal);
+                                    btnj.setText("追踪他");
+                                    btnj.setTextColor(getResources().getColor(R.color.btn_normal));
+                                    if (j == finalI) {
+                                        btnj.setBackgroundResource(R.drawable.shape_fellow_star);
+                                        btnj.setText("已追踪");
+                                        btnj.setTextColor(getResources().getColor(R.color.bg_white));
+                                    }
                                 }
                             }
                         }
@@ -188,18 +234,21 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.btn_test, R.id.tv_rolling, R.id.tv_news_more, R.id.tv_comment_more})
+    @OnClick({R.id.btn_test, R.id.tv_rolling, R.id.tv_news_more, R.id.tv_comment_more, R.id.tv_rank_more})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_test:
-                HomeFragment.this.getActivity().finish();
-                App.clearActivities();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+//                HomeFragment.this.getActivity().finish();
+//                App.clearActivities();
+//                Intent intent = new Intent(getActivity(), LoginActivity.class);
+//                startActivity(intent);
+
+                startActivity(new Intent(getActivity(), PlayerActivity.class));
 
                 break;
 
             case R.id.tv_rolling:
+                //滚动新闻
                 Intent intent1 = new Intent(mContext, WebActivity.class);
                 startActivity(intent1);
                 break;
@@ -207,11 +256,19 @@ public class HomeFragment extends BaseFragment {
                 //机构情报更多
                 activity.switchContent(activity.mContent, activity.mFragments.get(3));
                 activity.setDefaultResources(4);
+                activity.setTitleName("情报");
                 break;
             case R.id.tv_comment_more:
                 //名师解盘更多
                 activity.switchContent(activity.mContent, activity.mFragments.get(1));
                 activity.setDefaultResources(2);
+                activity.setTitleName("解盘");
+                break;
+            case R.id.tv_rank_more:
+                //榜单更多
+                activity.switchContent(activity.mContent, activity.mFragments.get(2));
+                activity.setDefaultResources(3);
+                activity.setTitleName("榜单");
                 break;
         }
     }

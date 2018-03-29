@@ -14,6 +14,7 @@ import com.djc.djcdz.ui.adapter.LogAdapter;
 import com.djc.djcdz.ui.adapter.PageAdapter;
 import com.djc.djcdz.ui.adapter.RouteAdapter;
 import com.djc.djcdz.util.ToastUtil;
+import com.djc.djcdz.view.HorCenterRecyclerView;
 import com.djc.djcdz.view.MyItemDecoration;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class LogFragment extends BaseFragment {
     @BindView(R.id.recycler_log)
     RecyclerView recyclerLog;
     @BindView(R.id.recycler_page)
-    RecyclerView recyclerPage;
+    HorCenterRecyclerView recyclerPage;
     private MasterActivity activity;
     private int currentPage = 1;  //当前页数
     private int pageCount = 6;  //每页展示的个数
