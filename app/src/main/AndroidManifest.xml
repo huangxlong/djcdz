@@ -60,19 +60,19 @@
 
         <activity
             android:name=".ui.login.LoginActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
             android:configChanges="keyboardHidden|orientation|locale|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".ui.MainTabActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
             android:configChanges="keyboardHidden|orientation|locale|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".ui.UserActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
             android:configChanges="keyboardHidden|orientation|locale|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".ui.PlayerActivity"
             android:configChanges="keyboardHidden|orientation|locale|screenSize"
@@ -83,9 +83,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MasterActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
             android:configChanges="keyboardHidden|orientation|locale|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.HtmlActivity"
+            android:configChanges="keyboardHidden|orientation|locale|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
     </application>
 
 </manifest>

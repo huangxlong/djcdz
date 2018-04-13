@@ -10,22 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.djc.djcdz.R;
-import com.djc.djcdz.app.App;
 import com.djc.djcdz.base.BaseFragment;
 import com.djc.djcdz.entity.RspDto;
+import com.djc.djcdz.ui.HtmlActivity;
 import com.djc.djcdz.ui.MainTabActivity;
 import com.djc.djcdz.ui.MasterActivity;
-import com.djc.djcdz.ui.PlayerActivity;
 import com.djc.djcdz.ui.WebActivity;
 import com.djc.djcdz.ui.adapter.CommentsAdapter;
 import com.djc.djcdz.ui.adapter.NewsAdapter;
 import com.djc.djcdz.ui.adapter.RankAdapter;
-import com.djc.djcdz.ui.login.LoginActivity;
 import com.djc.djcdz.util.ToastUtil;
 import com.djc.djcdz.view.MyItemDecoration;
 import com.google.android.flexbox.FlexboxLayout;
@@ -243,7 +240,7 @@ public class HomeFragment extends BaseFragment {
 //                Intent intent = new Intent(getActivity(), LoginActivity.class);
 //                startActivity(intent);
 
-                startActivity(new Intent(getActivity(), PlayerActivity.class));
+                startActivity(new Intent(getActivity(), HtmlActivity.class));
 
                 break;
 
@@ -272,6 +269,4 @@ public class HomeFragment extends BaseFragment {
                 break;
         }
     }
-
-
 }

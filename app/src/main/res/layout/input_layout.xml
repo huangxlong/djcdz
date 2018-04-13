@@ -2,26 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dip"
-        android:orientation="vertical"
         android:background="@color/bg_white"
-        android:padding="10dip" >
+        android:orientation="vertical"
+        android:padding="10dip">
 
         <LinearLayout
             android:id="@+id/input_layout_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_phone" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:background="#cdcdd2" />
 
             <EditText
                 android:id="@+id/et_account"
@@ -29,9 +39,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
                 android:background="#00000000"
-                android:hint="账号/用户名/邮箱"
+                android:hint="请输入股票开户账号"
                 android:padding="5dip"
-                android:textSize="16sp" />
+                android:textColorHint="#cdcdd2"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <View
@@ -46,11 +57,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_psd" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:background="#cdcdd2" />
 
             <EditText
                 android:id="@+id/et_password"
@@ -58,10 +79,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
                 android:background="#00000000"
-                android:hint="密码"
+                android:hint="请输入密码"
                 android:inputType="textPassword"
                 android:padding="5dip"
-                android:textSize="16sp" />
+                android:textColorHint="#cdcdd2"
+                android:textSize="13sp" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:background="#eeeeee" />
     </LinearLayout>
 </LinearLayout>

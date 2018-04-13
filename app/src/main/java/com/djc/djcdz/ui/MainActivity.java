@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseActivity;
@@ -14,8 +12,6 @@ import com.djc.djcdz.ui.login.LoginActivity;
 import com.djc.djcdz.util.ExampleUtil;
 import com.djc.djcdz.util.ToastUtil;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 public class MainActivity extends BaseActivity {
     public static boolean isForeground = false;

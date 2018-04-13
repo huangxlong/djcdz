@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -35,10 +36,8 @@ public class LoginActivity extends BaseActivity {
     LinearLayout mName;
     @BindView(R.id.input_layout_psw)
     LinearLayout mPsw;
-    @BindView(R.id.progressBar2)
-    ProgressBar progress;
     @BindView(R.id.main_btn_login)
-    TextView mBtnLogin;
+    Button mBtnLogin;
     @BindView(R.id.input_layout)
     View mInputLayout;
     @BindView(R.id.tick_view)

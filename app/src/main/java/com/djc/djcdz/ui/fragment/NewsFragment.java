@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.djc.djcdz.R;
 import com.djc.djcdz.base.BaseFragment;
 import com.djc.djcdz.entity.RspDto;
@@ -84,7 +85,6 @@ public class NewsFragment extends BaseFragment {
             }
         });
 
-
         for (int i = 0; i < totalPage; i++) {
             pages.add(i + 1);
         }
@@ -99,8 +99,6 @@ public class NewsFragment extends BaseFragment {
                 ToastUtil.show(mContext, position + "");
                 currentPage = position + 1;
                 turnPage(false);
-
-
             }
         });
     }

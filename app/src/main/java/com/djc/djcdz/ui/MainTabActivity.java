@@ -2,15 +2,11 @@ package com.djc.djcdz.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
-
-import static java.security.AccessController.getContext;
 
 /**
  * Created by Administrator on 2018/2/24.

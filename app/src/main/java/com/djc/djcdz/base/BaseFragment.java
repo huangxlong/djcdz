@@ -134,8 +134,7 @@ public abstract class BaseFragment extends Fragment {
      * 关闭软键盘
      */
     public void closeKeyboard() {
-        InputMethodManager imm = (InputMethodManager) mContext
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
 
         imm.hideSoftInputFromWindow(rootView.getWindowToken(), 0);
 

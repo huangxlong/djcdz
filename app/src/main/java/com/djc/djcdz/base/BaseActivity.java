@@ -2,6 +2,7 @@ package com.djc.djcdz.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         TAG = getClass().getSimpleName();
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+//        if(Build.VERSION.SDK_INT>=21){
+//            View decorView = getWindow().getDecorView();
+//            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            getWindow().setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(getLayout());
         ButterKnife.bind(this);
         App.addActivity(this);
